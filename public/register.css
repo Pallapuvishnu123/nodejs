@@ -1,0 +1,160 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(https://images.unsplash.com/photo-1622447036013-a7e7367759c3?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); 
+   }
+ .container
+{
+    position: relative;
+   border-inline-end: #ff0dfb;
+    max-width: 650px;
+    padding: 28px;
+    margin: 0 28px;
+    box-shadow: 0 15px 20px #4c4c4b;
+   
+}
+h2{
+    font-size: 26px;
+    font-weight:600;
+    text-align:left;
+    color:#274242;
+    padding-bottom: 8px;
+    border-bottom: 1px solid silver;
+}
+.content
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0 ;
+}
+.input-box
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    padding-bottom: 15px;
+}
+.input-box:nth-child(2n)
+{
+    justify-content:end;
+}
+.input-box label,gender-title
+{
+    width: 95%;
+    color: #305353;
+    font-weight: bold;
+    margin: 5px 0;
+}
+.gender-title
+{
+    font-weight: 600;
+    color: rgb(68, 67, 67);
+    padding-right: 100%;
+    font: size 16px;
+}
+.input-box input
+{
+    
+    height: 40px;
+    width: 95%;
+    padding: 0 10px ;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+.input-box input:is(:focus,:valid)
+{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+.gender-catageroy
+{
+    color: rgb(95, 93, 93);
+}
+.gender-catageroy label{
+    
+    padding: 0 10px;
+    font-size: 15px;
+}
+.gender-catageroy label, .gender-catageroy input
+{
+    cursor: pointer;
+}
+.click p
+{
+    font-size: 14px;
+    font-style: italic;
+    color: rgb(66, 63, 63);
+    margin: 5px 0;
+    padding: 10px;
+}
+.click a{
+    text-decoration: none;
+
+}
+.click a:hover
+{
+    text-decoration: underline;
+}
+.button-container
+{
+    margin: 15px 0 ;
+
+}
+.button-container button
+{
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 150px;
+    padding: 10px;
+    display: block;
+    font-size: 20px;
+    color: #c0bdbd;
+    border: none;
+    border-radius: 5px;
+    background-image: linear-gradient(to right,#aa076b,#61045f);  
+}
+.button-container button:hover
+{
+    background-image: linear-gradient(to right,#61045f,#aa076b);
+}
+@media(max-width:600px)
+{
+    .container
+    {
+        min-width:280px;
+
+    }
+    .content
+    {
+        max-height:380px ;
+        overflow: auto;
+    }
+    .input-box
+    {
+        margin-bottom: 12px;
+        width: 100%;
+    }
+    .input-box.input-box:nth-child(2n){
+        justify-content: space-between;
+    }
+    .gender-catageroy
+    {
+        display: flex;
+        justify-content: space-between;
+        width:800px ;
+    }
+    .button-container button{
+       margin-left: 80px;
+
+    }
+}

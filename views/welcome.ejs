@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plaiyam Employer</title>
+    <link rel="stylesheet" href="welcome.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <section class="available-Candidates">
+        <!-- <p> Welcome Pallapu vishnu</p> -->
+        <form action="/logout" method="post">
+            <button class="btn">LOGOUT</button>
+        </form>
+        <div class="candidates">
+            <h1 style="color: black;">Available Candidates:</h1>
+            <form action="/jobs" method="GET" id="searchForm" onsubmit="searchJobs(); return false;" style="max-width: 300px; margin: 0 auto;">
+                <label for="searchTerm">Search for candidates:</label>
+                <input type="text" id="searchTerm" name="term" required>
+                <button type="submit">Search</button>
+            </form>
+            </div>
+            <!-- Add this div to display search results -->
+            <div id="searchResultsContainer">
+    
+            </div>
+
+    </section>
+
+    <section>
+        <div class="job-section">
+            <h1>
+                Post Your Job Description: <i class='bx bx-caret-down'></i>
+            </h1>
+            <form action="./savejobs" method="POST">
+                <label for="name">Name:<sup style="color: red;">*</sup></label>
+                <input type="text" id="name" name="name" placeholder="Enter Fullname" required>
+
+                <label for="email">Email:<sup style="color: red;">*</sup></label>
+                <input type="email" id="email" name="email" placeholder="Enter your email " required>
+
+                <label for="phone">Phone:<sup style="color: red;">*</sup></label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter mobile number" required>
+
+                <label for="designation">Designation:<sup style="color: red;">*</sup></label>
+                <input type="text" id="designation" name="designation" placeholder="Enter your designation" required>
+                <label for="job-description">Job Description:<sup style="color: red;">*</sup></label>
+                <textarea id="job-description" name="jobDescription" style="width: 620px; border-radius: 7px;"
+                    placeholder="Enter your job description" required></textarea>
+
+                <label for="experience">Experience:<sup style="color: red;">*</sup></label>
+                <input type="text" id="experience" name="experience" placeholder="Ex:3or4" required>
+
+                <label for="responsibilities">Responsibilities:<sup style="color: red;">*</sup></label>
+                <textarea id="responsibilities" name="responsibilities" style="width: 620px; border-radius: 7px;"
+                    required></textarea>
+
+                <label for="required-date">Required Date:<sup style="color: red;">*</sup></label>
+                <input type="date" id="required-date" name="requiredDate" required>
+
+                <label for="ctc">CTC:<sup style="color: red;">*</sup></label>
+                <input type="text" id="ctc" name="ctc" placeholder="ex:3LPA or 3.5LPA" required>
+
+                <button>Submit</button>
+            </form>
+        </div>
+    </section>
+    <script src="welcome.js"></script>
+</body>
+
+</html>

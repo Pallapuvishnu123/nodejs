@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<style>
+    /* Add this to your register.css file */
+    .alert {
+        position: fixed;
+        top:4%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px; /* Set a width as needed */
+        padding: 15px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        text-align: center;
+    }
+    .alert-success {
+        color: #3aad3c;
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+    }
+
+    .input-box {
+        position: relative;
+    }
+
+    .password-toggle {
+        position: absolute;
+        top: 55%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        z-index: 1; /* Ensure the icon is above the input field */
+        font-size: 24px;
+    }
+
+</style>
+<script>
+   // Function to toggle password visibility
+function togglePasswordVisibility(id) {
+    const passwordInput = document.getElementById('ps');
+    if (passwordInput) {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    } else {
+        console.error("Element with the provided ID not found");
+    }
+}
+
+</script>
+<body>
+    <% if (message && message.length > 0) { %>
+        <div class="alert alert-success" role="alert">
+            <%= message %>
+        </div>
+    <% } %>
+    <form action='/login' method="post">
+        <div class="wrapper">
+            <h1>Employer Login</h1>
+            <div class="input-box">
+                <input type="email" name="email" placeholder="username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="ps" name="password" placeholder="password" required>
+                <i class='bx bxs-lock'></i>
+                <span class="password-toggle" onclick="togglePasswordVisibility('password')">&#128065;</span>
+            </div>
+            <div class="remember-forget">
+                <label><input type="checkbox">Remember me</label>
+                <a href="#">forgot password ?</a>
+            </div>
+            <button class="btn" type="submit">LOGIN</button>
+        <div class="register-link">
+            <p>Don't have an account ? <a href="http://localhost:5000/register">Register</a></p>
+        </div>
+    </form>
+</body>
+
+</html>
+<!-- <input type="email" name="email">
+<label>password:</label>
+<input type="password" name="password">
+<button type="submit">submit</button> -->

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="register.css">
+    <title>Register form</title>
+</head>
+<style>
+    .alert {
+        position: fixed;
+        top: 4%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        padding: 15px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    .alert-success {
+        color: #3aad3c;
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+    }
+
+    .input-box {
+        position: relative;
+    }
+
+    .password-toggle {
+        position: absolute;
+        top: 55%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        z-index: 1;
+        /* Ensure the icon is above the input field */
+        font-size: 24px;
+    }
+
+    .password-toggle1 {
+        position: absolute;
+        top: 55%;
+        left: 250px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        z-index: 1;
+        /* Ensure the icon is above the input field */
+        font-size: 24px;
+    }
+</style>
+
+
+<body>
+    <script>
+        // Check if the page is loaded after a form submission and reload after a delay
+        document.addEventListener("DOMContentLoaded", function () {
+            const flashMessage = "<%= message %>";
+            const isFormSubmitted = sessionStorage.getItem('formSubmitted');
+
+            if (flashMessage && isFormSubmitted) {
+                setTimeout(function () {
+                    location.reload();
+                }, 2000);
+            }
+
+            // Clear the sessionStorage after processing
+            sessionStorage.removeItem('formSubmitted');
+        });
+
+        // Set a flag in sessionStorage to check if the page is loaded after a form submission
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+            sessionStorage.setItem('formSubmitted', 'true');
+        }
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById('ps');
+            var passwordInput1 = document.getElementById('ps1');
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+
+            if (passwordInput1.type === "password") {
+                passwordInput1.type = "text";
+            } else {
+                passwordInput1.type = "password";
+            }
+        }
+
+    </script>
+
+    <% if (message && message.length> 0) { %>
+        <div class="alert alert-success" role="alert">
+            <%= message %>
+        </div>
+        <% } %>
+            <div class="container">
+                <form action="/register" method="post">
+                    <h2>Employer Registration</h2>
+                    <div class="content">
+                        <div class="input-box">
+                            <label for="name">FULL NAME</label>
+                            <input type="text" placeholder="Enter your full name" name="fullname" required>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="username">USERNAME</label>
+                            <input type="text" placeholder="Enter your username" name="username" required>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="email">EMAIL</label>
+                            <input type="email" placeholder="Enter your email address" name="email" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="gender">GENDER</label>
+                            <select name="gender" style="width:280px; height: 39px; border-radius: 5px;" required>
+                                <option>----select-----</option>
+                                <option value="Male">MALE</option>
+                                <option value="Female">FEMALE</option>
+                            </select>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="phone">PHONE NUMBER</label>
+                            <input type="tel" placeholder="Enter your phone number" name="phonenumber" required>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="password">PASSWORD</label>
+                            <input type="password" id="ps" placeholder="Enter your password" name="password"
+                                pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+                                title="Password must contain at least one letter, one number, and one special character. Minimum length is 8 characters."
+                                required>
+                            <span class="password-toggle"
+                                onclick="togglePasswordVisibility('password')">&#128065;</span>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="cpassword">CONFIRM PASSWORD</label>
+                            <input type="password" id="ps1" placeholder="CONFIRM PASSWORD" name="confirmpassword"
+                                required>
+                            <span class="password-toggle1"
+                                onclick="togglePasswordVisibility('password')">&#128065;</span>
+                        </div>
+                        <div class="click">
+                            <p>By clicking sign up, you agree to our <a href="#"> Terms</a>, <a href="#">privacy and
+                                    policy</a>, and <a href="#">cookies policy</a>. You may receive SMS notifications
+                                from us and can opt out at any time.</p>
+                        </div>
+
+                        <div class="button-container">
+                            <button type="submit">Register</button>
+                        </div>
+                </form>
+            </div>
+
+            <div class="register-link">
+                <p>Do you have an account?<button
+                        style="width: 100px; height:30px; background-color: rgb(93, 230, 230); border-radius: 10px; margin-left: 10px;"><a
+                            href="http://localhost:5000/login"
+                            style="text-decoration: none; color: white; font-weight:900;">LOGIN</a></button></p>
+            </div>
+</body>
+
+</html>
